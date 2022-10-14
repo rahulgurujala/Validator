@@ -25,9 +25,7 @@ class Between(Max, Min):
         Max.__init__(self, max_value)
 
     def check(self, arg):
-        if Min.check(self, arg) and Max.check(self, arg):
-            return True
-        return False
+        return bool(Min.check(self, arg) and Max.check(self, arg))
 
     def __from_str__(self):
         Min.__from_str__(self)

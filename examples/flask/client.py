@@ -18,7 +18,7 @@ def register_1_pass():
     }
 
     # Create URL on specific route
-    URL = FLASK_SERVER_URL + "/register?"
+    URL = f"{FLASK_SERVER_URL}/register?"
     params = "&".join(f"{key}={data[key]}" for key in data)
     # Append URL and parameters
     URL += params
@@ -42,7 +42,7 @@ def register_2_pass():
     }
 
     # Create URL on specific route
-    URL = FLASK_SERVER_URL + "/register"
+    URL = f"{FLASK_SERVER_URL}/register"
 
     # Do POST request
     U._log_paragraph("Sent GET Request to:")
@@ -65,7 +65,7 @@ def register_3_fail():
     }
 
     # Create URL on specific route
-    URL = FLASK_SERVER_URL + "/register?"
+    URL = f"{FLASK_SERVER_URL}/register?"
     params = "&".join(f"{key}={data[key]}" for key in data)
     # Append URL and parameters
     URL += params
@@ -89,7 +89,7 @@ def register_4_fail():
     }
 
     # Create URL on specific route
-    URL = FLASK_SERVER_URL + "/register"
+    URL = f"{FLASK_SERVER_URL}/register"
 
     # Do POST request
     U._log_paragraph("Sent POST Request to:")

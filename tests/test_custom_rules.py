@@ -46,10 +46,7 @@ def test_rule_func_04():
 
 def test_rule_func_05():
     def func_prime(x):
-        if x <= 1:
-            return False
-
-        return not any([(x % i) == 0 for i in range(2, x)])
+        return False if x <= 1 else all(x % i != 0 for i in range(2, x))
 
     rule = {"prime_num": func_prime}
     assert validate({"prime_num": 13}, rule)
@@ -98,9 +95,13 @@ def test_rule_func_06():
 
 
 def test_rule_func_07():
+
+
+
     class AgesChecker:
         def __call__(self, arg):
-            return 18 <= arg
+            return arg >= 18
+
 
     class NameChecker:
         def __call__(self, arg):

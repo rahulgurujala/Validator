@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import pkgutil
 
-rules_src = f"validator/rules.py"
+rules_src = "validator/rules.py"
 rules_file = open(rules_src, "w")
 
 # import parrent rule class

@@ -36,10 +36,7 @@ class RequiredIf(Required):
 
         field_value = self.rw.get_field_data(self.field_name)
 
-        if field_value != self.field_val:
-            return True
-
-        return Required.check(self, arg)
+        return True if field_value != self.field_val else Required.check(self, arg)
 
     def __from_str__(self):
         pass

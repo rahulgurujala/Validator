@@ -49,12 +49,12 @@ class Validator:
 
     def check_rules(self):
         # check for rules' type (should be dictionary)
-        if not type(self.rules) is dict:
+        if type(self.rules) is not dict:
             False
 
         for _, value in self.rules.items():
             # check for dictionary's value's type (should be list)
-            if not type(value) is list:
+            if type(value) is not list:
                 False
             for rule in value:
                 # check for each value being R.Rule class instance
@@ -105,13 +105,14 @@ def validate_many(requests, rules, return_info=False):
     """
 
     def get_validation_result(
-        _results, _validated_datas, _errors, _return_info=return_info
-    ):
+            _results, _validated_datas, _errors, _return_info=return_info
+        ):
         return (
-            all(_results)
-            if not _return_info
-            else (all(_results), _validated_datas, _errors)
+            (all(_results), _validated_datas, _errors)
+            if _return_info
+            else all(_results)
         )
+
 
     results, validated_datas, errors = [], [], []
     for request in requests:

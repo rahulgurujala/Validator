@@ -6,13 +6,14 @@ from validator import rules as R
 # and in those keys, the samme rules are written as an array
 def instances_checker(input_dict, target_dict):
     for key in target_dict.keys():
-        if input_dict[key] and len(input_dict[key]) == len(target_dict[key]):
-            for i in range(len(input_dict[key])):
-                if not isinstance(input_dict[key][i], target_dict[key][i].__class__):
-                    return False
-        else:
+        if not input_dict[key] or len(input_dict[key]) != len(
+            target_dict[key]
+        ):
             return False
 
+        for i in range(len(input_dict[key])):
+            if not isinstance(input_dict[key][i], target_dict[key][i].__class__):
+                return False
     # if all match, all is left to do, is to check if their lengths are the same
     return len(input_dict) == len(target_dict)
 

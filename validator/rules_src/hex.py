@@ -41,9 +41,7 @@ class Hex(Rule):
 
     @staticmethod
     def convert(val):
-        if isinstance(val, int):
-            return val
-        return int(val, 16)
+        return val if isinstance(val, int) else int(val, 16)
 
     def __from_str__(self):
         pass

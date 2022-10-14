@@ -31,16 +31,16 @@ class IPv6(Rule):
             return False
 
         if arg[0] == ":" and arg[1] != ":":
-            self.set_error(f"Starts with colon")
+            self.set_error("Starts with colon")
             return False
 
         if arg[-1] == ":" and arg[-2] != ":":
-            self.set_error(f"Endss with colon")
+            self.set_error("Endss with colon")
             return False
 
         hextets = arg.split(":")
         if len(hextets) < 3:
-            self.set_error(f"Less than 3 sectors")
+            self.set_error("Less than 3 sectors")
             return False
 
         case = len(hextets) == 9 and (
@@ -48,11 +48,11 @@ class IPv6(Rule):
         )
 
         if len(hextets) > 8 and not case:
-            self.set_error(f"More than 8 hextets with now trailing consecutive colons")
+            self.set_error("More than 8 hextets with now trailing consecutive colons")
             return False
 
         if len(hextets) != 8 and arg.count("::") == 0:
-            self.set_error(f"No apropriate number of hextets")
+            self.set_error("No apropriate number of hextets")
             return False
 
         for hextet in hextets:

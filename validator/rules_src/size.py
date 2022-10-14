@@ -113,18 +113,10 @@ class Size(Integer, List):
                 return arg
 
             # Check for length, else convert to string and then check for len()
-            if hasattr(arg, "__len__"):
-                check_size = len(arg)
-            else:
-                converted = str(arg)
-                check_size = len(converted)
-            return check_size
+            return len(arg) if hasattr(arg, "__len__") else len(str(arg))
         except:
             return None
 
     def __from_str__(self):
         if utils.RepresentsInt(self.size):
             self.size = int(self.size)
-        else:
-            # ToDo: Handle Error
-            pass

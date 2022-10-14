@@ -36,9 +36,7 @@ class Decimal(Rule):
 
     @staticmethod
     def convert(val):
-        if isinstance(val, int):
-            return val
-        return int(val, 10)
+        return val if isinstance(val, int) else int(val, 10)
 
     def __from_str__(self):
         pass

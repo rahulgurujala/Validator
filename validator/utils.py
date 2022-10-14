@@ -11,9 +11,7 @@ def RepresentsInt(val):
     if type(val) == int:
         return True
     try:
-        if val[0] in ("-", "+"):
-            return val[1:].isdigit()
-        return val.isdigit()
+        return val[1:].isdigit() if val[0] in ("-", "+") else val.isdigit()
     except:
         return False
 
