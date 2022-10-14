@@ -17,11 +17,7 @@ class RulesWrapper:
         for key in self.rules:
             rules = self.rules[key]
 
-            if key not in self.request:
-                data = None
-            else:
-                data = self.request[key]
-
+            data = None if key not in self.request else self.request[key]
             # Interface for rules
             rpv = RPV(data, rules, self)
             rpv_result = rpv.execute()

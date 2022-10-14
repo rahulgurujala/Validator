@@ -28,7 +28,7 @@ class Alpha(Rule):
             return False
 
         if not arg.isalpha():
-            self.set_error(f"Expected all characters to be alphabetic [a-zA-z]")
+            self.set_error("Expected all characters to be alphabetic [a-zA-z]")
             return False
 
         return True

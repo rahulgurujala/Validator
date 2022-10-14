@@ -23,4 +23,4 @@ class RulePipeValidator:
         return self.errors_on_key
 
     def __contains__(self, item):
-        return any([type(rule) == item for rule in self.rules])
+        return any(type(rule) == item for rule in self.rules)

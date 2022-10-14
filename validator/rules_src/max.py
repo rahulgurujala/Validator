@@ -42,6 +42,3 @@ class Max(Rule):
     def __from_str__(self):
         if utils.RepresentsInt(self.max):
             self.max = int(self.max)
-        else:
-            # ToDo: Handle Error
-            pass

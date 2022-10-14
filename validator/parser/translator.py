@@ -71,11 +71,7 @@ class Translator:
             return re.findall(pattern, self.value)
 
         # if value is array return
-        if isinstance(self.value, list):
-            return self.value
-
-        # at this point we should return given value tranformed into array
-        return [self.value]
+        return self.value if isinstance(self.value, list) else [self.value]
 
     def _translate_str(self, elem):
         """
@@ -101,7 +97,7 @@ class Translator:
         class_str = class_str.replace("_", "")
 
         # Check if class string is in the list
-        if not class_str in R.__all__:
+        if class_str not in R.__all__:
             raise exc.NoRuleError
 
         init_rule = R.__all__[class_str]

@@ -41,6 +41,3 @@ class Min(Rule):
     def __from_str__(self):
         if utils.RepresentsInt(self.min):
             self.min = int(self.min)
-        else:
-            # ToDo: Handle Error
-            pass

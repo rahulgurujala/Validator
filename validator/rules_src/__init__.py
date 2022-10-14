@@ -13,9 +13,7 @@ class Rule(metaclass=ABCMeta):
 
     def __call__(self, arg):
         result = self.check(arg)
-        if isinstance(result, bool):
-            return result
-        return False
+        return result if isinstance(result, bool) else False
 
     def check(self, arg):
         pass
@@ -81,9 +79,9 @@ for (_, file, _) in pkgutil.iter_modules([str(Path(__file__).parent)]):
         rule_class = getattr(pkg, i)
         if "aliases" in rule_class.__dict__:
             for alias in rule_class.aliases:
-                __all__.update({alias.lower(): rule_class})
+                __all__[alias.lower()] = rule_class
 
         if len(rule_class.__init__.__code__.co_varnames) > 1:
             rules_with_args.append(i.lower())
 
-        __all__.update({i.lower(): rule_class})
+        __all__[i.lower()] = rule_class

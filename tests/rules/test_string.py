@@ -7,7 +7,7 @@ def test_string_01():
 
     assert String().check("this is also string")
 
-    assert String().check(f"this is interpolated string { 17 }")
+    assert String().check('this is interpolated string 17')
 
     assert String().check("")
 

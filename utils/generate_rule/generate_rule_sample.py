@@ -26,7 +26,10 @@ def create_rule_file(file_name):
     class_name = get_class_name(file_name)
 
     # get full path for the rule file
-    rule_path = os.path.join(ROOT_DIR, "validator/rules_src", file_name.lower() + ".py")
+    rule_path = os.path.join(
+        ROOT_DIR, "validator/rules_src", f"{file_name.lower()}.py"
+    )
+
 
     tm = Template(open(RULE_TEMPLATE_PATH).read())
     file_content = tm.render(name=class_name)
@@ -42,8 +45,9 @@ def create_test_file(file_name):
 
     # get full path for the test file
     test_path = os.path.join(
-        ROOT_DIR, "tests/rules", "test_" + file_name.lower() + ".py"
+        ROOT_DIR, "tests/rules", f"test_{file_name.lower()}.py"
     )
+
 
     tm = Template(open(TEST_TEMPLATE_PATH).read())
     file_content = tm.render(name=class_name, file_name=file_name.lower())

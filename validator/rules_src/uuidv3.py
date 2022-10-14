@@ -28,7 +28,7 @@ class UUIDv3(Rule):
             uuid = UUID(arg)
 
             if uuid.version is None:
-                self.set_error(f"Expected: UUIDv3, but no version was found")
+                self.set_error("Expected: UUIDv3, but no version was found")
                 return False
 
             if uuid.version != 3:

@@ -93,9 +93,7 @@ with open(RULES_MD, "w") as re:
 
     # This method filters nested list and returns True values.
     def remove_nested_values(value):
-        if value == "_":
-            return False
-        return True
+        return value != "_"
 
     # transpose nested list.
     table_of_contents = transpose_nested_matrix(
